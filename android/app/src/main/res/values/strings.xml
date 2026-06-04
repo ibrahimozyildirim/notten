@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">NOTTEN</string>
+    <string name="title_activity_main">NOTTEN</string>
+    <string name="package_name">com.notten.app</string>
+    <string name="custom_url_scheme">com.notten.app</string>
+</resources>
