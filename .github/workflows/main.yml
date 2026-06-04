@@ -1,0 +1,42 @@
+name: Android APK Uret
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodlari Cek
+        uses: actions/checkout@v3
+
+      - name: Node.js Kur
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Paketi Yukle
+        run: npm install
+
+      - name: Web Versiyonunu Derle
+        run: npm run build
+
+      - name: Java Kur (Android Icin Gerekli)
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Mobil Kodlari Esitle
+        run: npx cap sync android
+
+      - name: APK Dosyasini Uret
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      - name: APK'yi Bize Ver
+        uses: actions/upload-artifact@v3
+        with:
+          name: NOTTEN-Uygulamasi-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
