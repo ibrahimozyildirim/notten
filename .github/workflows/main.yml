@@ -21,7 +21,7 @@ uses: actions/checkout@v4
   - name: Web Versiyonunu Derle
     run: npm run build
 
-  - name: Java Kur (Android Icin Gerekli)
+  - name: Java Kur
     uses: actions/setup-java@v4
     with:
       distribution: 'zulu'
